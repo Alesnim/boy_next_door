@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Я сосу бибу'),
     );
   }
 }
@@ -51,6 +52,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var e;
+  final myController = TextEditingController();
 
   void _incrementCounter() {
     setState(() {
@@ -60,8 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -98,12 +103,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Я сосу бибу',
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            TextField(controller: myController,
+            onChanged: (text) {
+              e = text;
+            },),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("${e}"),
+                Text("sdasda"),
+              ],
+            )
           ],
         ),
       ),
@@ -114,4 +130,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    myController.dispose();
+  }
 }
+
+
